@@ -1,0 +1,6 @@
+{
+  "name": "7 Strength Center",
+  "description": "Página web oficial de 7 Strength Center en Cajamarca, Perú. Información de planes, horarios, instalaciones y contacto directo por WhatsApp.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

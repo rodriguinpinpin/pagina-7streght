@@ -1,0 +1,169 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --color-primary: #D71920;
+    --color-primary-dark: #A80F15;
+    --color-bg-dark: #0B0B0C;
+    --color-surface-dark: #19191B;
+    --color-surface-card: #141416;
+    --color-text-light: #F2F2F2;
+    --a11y-font-scale: 1;
+  }
+
+  html {
+    color-scheme: dark;
+    font-size: calc(16px * var(--a11y-font-scale));
+  }
+
+  /* Custom scrollbar for athletic liquid dark theme */
+  ::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #0B0B0C;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #27272A;
+    border-radius: 4px;
+    border: 2px solid #0B0B0C;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #D71920;
+  }
+}
+
+.font-display {
+  font-family: 'Bebas Neue', 'Oswald', sans-serif;
+  letter-spacing: 0.04em;
+}
+
+.font-heading {
+  font-family: 'Oswald', 'Bebas Neue', sans-serif;
+  letter-spacing: 0.02em;
+}
+
+.font-sans {
+  font-family: 'Manrope', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+}
+
+/* ==========================================================================
+   LIQUID GLASS DESIGN SYSTEM
+   ========================================================================== */
+.liquid-glass {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.06) 0%, rgba(20, 20, 23, 0.7) 50%, rgba(11, 11, 12, 0.9) 100%);
+  backdrop-filter: blur(20px) saturate(180%);
+  -webkit-backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  box-shadow: 
+    inset 0 1px 1px 0 rgba(255, 255, 255, 0.18),
+    inset 0 -1px 1px 0 rgba(0, 0, 0, 0.5),
+    0 20px 45px -15px rgba(0, 0, 0, 0.8);
+}
+
+.liquid-glass-subtle {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(18, 18, 20, 0.6) 100%);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: inset 0 1px 1px 0 rgba(255, 255, 255, 0.1), 0 15px 35px -10px rgba(0, 0, 0, 0.7);
+}
+
+.liquid-glass-red {
+  background: linear-gradient(135deg, rgba(215, 25, 32, 0.14) 0%, rgba(25, 14, 16, 0.8) 50%, rgba(11, 11, 12, 0.95) 100%);
+  backdrop-filter: blur(20px) saturate(190%);
+  -webkit-backdrop-filter: blur(20px) saturate(190%);
+  border: 1.5px solid rgba(215, 25, 32, 0.6);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 120, 120, 0.35),
+    inset 0 0 15px 0 rgba(215, 25, 32, 0.15),
+    0 25px 50px -12px rgba(215, 25, 32, 0.35);
+}
+
+.liquid-glass-interactive {
+  transition: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.liquid-glass-interactive:hover {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(28, 28, 33, 0.8) 50%, rgba(14, 14, 16, 0.95) 100%);
+  border-color: rgba(215, 25, 32, 0.65);
+  box-shadow: 
+    inset 0 1px 2px 0 rgba(255, 255, 255, 0.3),
+    0 25px 50px -15px rgba(215, 25, 32, 0.25);
+  transform: translateY(-4px);
+}
+
+/* ==========================================================================
+   ACCESSIBILITY MODIFIERS (A11Y)
+   ========================================================================== */
+
+/* High Contrast Mode */
+html.a11y-high-contrast {
+  --color-bg-dark: #000000;
+  --color-surface-dark: #000000;
+  --color-surface-card: #000000;
+}
+html.a11y-high-contrast body {
+  background-color: #000000 !important;
+  color: #FFFFFF !important;
+}
+html.a11y-high-contrast .liquid-glass,
+html.a11y-high-contrast .liquid-glass-subtle,
+html.a11y-high-contrast .liquid-glass-red {
+  background: #000000 !important;
+  border: 2px solid #FFFFFF !important;
+  box-shadow: none !important;
+}
+html.a11y-high-contrast p,
+html.a11y-high-contrast span {
+  color: #FFFFFF !important;
+}
+html.a11y-high-contrast h1,
+html.a11y-high-contrast h2,
+html.a11y-high-contrast h3,
+html.a11y-high-contrast h4 {
+  color: #FFFF00 !important;
+}
+
+/* Dyslexia-friendly Font & Spacing */
+html.a11y-dyslexia * {
+  letter-spacing: 0.08em !important;
+  word-spacing: 0.16em !important;
+  line-height: 1.8 !important;
+}
+
+/* Grayscale Mode */
+html.a11y-grayscale {
+  filter: grayscale(100%) contrast(110%);
+}
+
+/* Highlight Links Mode */
+html.a11y-highlight-links a,
+html.a11y-highlight-links button {
+  text-decoration: underline !important;
+  text-decoration-thickness: 2px !important;
+  text-underline-offset: 4px !important;
+  outline: 2px solid #FFFF00 !important;
+}
+
+/* Large Cursor */
+html.a11y-big-cursor,
+html.a11y-big-cursor * {
+  cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32' viewBox='0 0 32 32'%3E%3Cpath fill='%23FFFFFF' stroke='%23D71920' stroke-width='2' d='M6 3l16 16-7 1 4 8-3 1-4-8-6 5V3z'/%3E%3C/svg%3E"), auto !important;
+}
+
+/* Reduced Motion Override */
+html.a11y-reduced-motion *,
+html.a11y-reduced-motion *::before,
+html.a11y-reduced-motion *::after {
+  animation-duration: 0.001ms !important;
+  animation-iteration-count: 1 !important;
+  transition-duration: 0.001ms !important;
+  scroll-behavior: auto !important;
+}
+
+/* Accessible Focus Rings */
+:focus-visible {
+  outline: 3px solid #D71920 !important;
+  outline-offset: 3px !important;
+}
