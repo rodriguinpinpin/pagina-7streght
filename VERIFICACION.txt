@@ -1,0 +1,16 @@
+VERIFICACIÓN LOCAL — 11 de noviembre de 2026
+
+- Compilación de App.jsx a App.js: correcta.
+- Comprobación de sintaxis JavaScript: correcta.
+- Inicio mediante tools/start.ps1 en este equipo: correcto.
+- Las siete secciones originales aparecen en el navegador.
+- 15 archivos de imágenes y fuentes servidos localmente: respuesta HTTP correcta y tamaño verificado.
+- Galería: apertura, siguiente fotografía y cierre comprobados.
+- Panel de accesibilidad: apertura, tamaño de texto, restablecimiento y cierre comprobados.
+- Recarga automática: modificación temporal del título JSX y CSS; cambios visibles y contenido original restaurado.
+- Consola de la aplicación durante la revisión: sin errores registrados.
+- Vista previa de escritorio revisada.
+
+No se enviaron mensajes por WhatsApp ni se publicaron cambios en el sitio original.
+Los servicios externos de Instagram y Google Maps no forman parte del contenido descargado.
+El servidor de comprobación se detuvo al finalizar. Usa INICIAR.cmd para abrir tu propia sesión.

@@ -1,0 +1,15 @@
+# Archivos que no se suben a Vercel
+.env
+node_modules
+original-publicado
+respaldo-version-anterior
+assets/personas/originales
+assets/personas/fuente
+assets/personas/coach-4.png
+tools
+*.cmd
+*.code-workspace
+.vscode
+recovery-manifest.json
+VERIFICACION.txt
+design-system

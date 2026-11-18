@@ -1,0 +1,82 @@
+{
+  "source": "https://service-7-strength-center-1.ai.studio/",
+  "date": "2026-11-11",
+  "note": "Frontend recuperado; no es el repositorio fuente original. JSX reconstruido del JavaScript público.",
+  "assets": [
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_9a92408f.png",
+      "file": "assets/aistudio/image_9a92408f.png",
+      "bytes": 316077
+    },
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_993ddb80.png",
+      "file": "assets/aistudio/image_993ddb80.png",
+      "bytes": 3014995
+    },
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_f8a8200a.png",
+      "file": "assets/aistudio/image_f8a8200a.png",
+      "bytes": 2914218
+    },
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_e767c3d6.png",
+      "file": "assets/aistudio/image_e767c3d6.png",
+      "bytes": 3290908
+    },
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_19a15b40.png",
+      "file": "assets/aistudio/image_19a15b40.png",
+      "bytes": 3242496
+    },
+    {
+      "url": "https://service-7-strength-center-1.ai.studio/assets/aistudio/image_cab5cadb.png",
+      "file": "assets/aistudio/image_cab5cadb.png",
+      "bytes": 3249915
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/bebasneue/v16/JTUSjIg69CK48gW7PXooxW4.ttf",
+      "file": "assets/fonts/font-0.ttf",
+      "bytes": 56136
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk79FO_F.ttf",
+      "file": "assets/fonts/font-1.ttf",
+      "bytes": 96200
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk7PFO_F.ttf",
+      "file": "assets/fonts/font-2.ttf",
+      "bytes": 96300
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4jE-_F.ttf",
+      "file": "assets/fonts/font-3.ttf",
+      "bytes": 96348
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk4aE-_F.ttf",
+      "file": "assets/fonts/font-4.ttf",
+      "bytes": 96188
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/manrope/v23/xn7_YHE41ni1AdIRqAuZuw1Bx9mbZk59E-_F.ttf",
+      "file": "assets/fonts/font-5.ttf",
+      "bytes": 96816
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/oswald/v57/TK3_WkUHHAIjg75cFRf3bXL8LICs18NvgUE.ttf",
+      "file": "assets/fonts/font-6.ttf",
+      "bytes": 86428
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/oswald/v57/TK3_WkUHHAIjg75cFRf3bXL8LICs1y9ogUE.ttf",
+      "file": "assets/fonts/font-7.ttf",
+      "bytes": 86444
+    },
+    {
+      "url": "https://fonts.gstatic.com/s/oswald/v57/TK3_WkUHHAIjg75cFRf3bXL8LICs1xZogUE.ttf",
+      "file": "assets/fonts/font-8.ttf",
+      "bytes": 86416
+    }
+  ]
+}

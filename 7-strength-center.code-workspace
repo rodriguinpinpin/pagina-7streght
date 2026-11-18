@@ -1,0 +1,9 @@
+{
+  "folders": [{ "path": "." }],
+  "settings": {
+    "files.encoding": "utf8",
+    "editor.tabSize": 2,
+    "files.exclude": { "src/App.js": true },
+    "search.exclude": { "vendor/**": true, "tools/babel.cjs": true, "original-publicado/**": true, "src/App.js": true }
+  }
+}
