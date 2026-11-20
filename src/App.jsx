@@ -270,6 +270,145 @@ function A11yPanel() {
   const [s, setS] = useState(readA11y);
   const btnRef = useRef(null);
   const panelRef = useRef(null);
+  const panelRef = useRef(null);
+  
+  // ---------- ASISTENTE DE VOZ ----------
+  const [voiceStatus, setVoiceStatus] = useState("Voz lista");
+  const [voiceMessage, setVoiceMessage] = useState("");
+  const [whatsappPending, setWhatsappPending] = useState(false);
+
+  const speak = (message) => {
+    if (!("speechSynthesis" in window)) {
+      setVoiceMessage("Tu navegador no admite lectura en voz alta.");
+      return;
+    }
+
+    window.speechSynthesis.cancel();
+    const utterance = new SpeechSynthesisUtterance(message);
+    utterance.lang = "es-PE";
+    utterance.rate = 0.95;
+    utterance.onstart = () => setVoiceStatus("Leyendo...");
+    utterance.onend = () => setVoiceStatus("Voz lista");
+    utterance.onerror = () => setVoiceStatus("Error de reproducción");
+    window.speechSynthesis.speak(utterance);
+  };
+
+  const stopSpeaking = () => {
+    window.speechSynthesis?.cancel();
+    setVoiceStatus("Lectura detenida");
+  };
+
+  const goToSection = (id, message) => {
+    const section = document.getElementById(id);
+    if (!section) {
+      speak("No encontré esa sección.");
+      return;
+    }
+    section.scrollIntoView({ behavior: "smooth", block: "start" });
+    speak(message);
+  };
+
+  const readPage = () => {
+    const content = document.querySelector("main") || document.body;
+    const text = content.innerText.replace(/\s+/g, " ").trim().slice(0, 12000);
+    if (text) speak(text);
+    else speak("No hay contenido para leer.");
+  };
+
+  const processVoiceCommand = (command) => {
+    const text = command.toLowerCase().normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+
+    if (/\b(detener|parar|silencio)\b/.test(text)) {
+      stopSpeaking();
+      return;
+    }
+
+    if (text.includes("leer la pagina") || text === "leer") {
+      readPage();
+      return;
+    }
+
+    if (text.includes("inscrib") || text.includes("precio") || text.includes("plan")) {
+      goToSection("planes", "Te llevo a nuestros planes de entrenamiento. Puedes revisar las opciones y precios. ¿Deseas consultar por WhatsApp?");
+      setWhatsappPending(true);
+      return;
+    }
+
+    if (text.includes("entrenador")) {
+      goToSection("entrenadores", "Aquí puedes conocer a nuestros entrenadores.");
+      return;
+    }
+
+    if (text.includes("horario")) {
+      goToSection("horarios", "Aquí puedes consultar nuestros horarios.");
+      return;
+    }
+
+    if (text.includes("contacto") || text.includes("hablar con alguien") || text.includes("ubicacion")) {
+      goToSection("contacto", "Te llevo a la sección de contacto.");
+      return;
+    }
+
+    if (text.includes("inicio")) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      speak("Has vuelto al inicio.");
+      return;
+    }
+
+    speak("No reconocí el comando. Puedes decir ir a planes, horarios, contacto o inicio.");
+  };
+
+  const startVoiceRecognition = () => {
+    const Recognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+    if (!Recognition) {
+      setVoiceStatus("Micrófono no compatible");
+      speak("Prueba con Google Chrome o Microsoft Edge.");
+      return;
+    }
+
+    const recognition = new Recognition();
+    recognition.lang = "es-PE";
+    recognition.continuous = false;
+    recognition.interimResults = false;
+
+    recognition.onstart = () => {
+      setVoiceStatus("Escuchando...");
+      setVoiceMessage("Te escucho. Di un comando.");
+    };
+
+    recognition.onresult = (event) => {
+      const command = event.results[0][0].transcript;
+      setVoiceMessage(`Escuché: ${command}`);
+      processVoiceCommand(command);
+    };
+
+    recognition.onerror = (event) => {
+      setVoiceStatus("No se pudo escuchar");
+      setVoiceMessage(
+        event.error === "not-allowed"
+          ? "Debes permitir el acceso al micrófono."
+          : "Inténtalo nuevamente."
+      );
+    };
+
+    recognition.onend = () => setVoiceStatus("Voz lista");
+    recognition.start();
+  };
+
+  const openWhatsAppFromVoice = () => {
+    if (!whatsappPending) return;
+
+    window.open(
+      wa("Hola, deseo información para inscribirme en 7 Strength Center."),
+      "_blank",
+      "noopener,noreferrer"
+    );
+
+    setWhatsappPending(false);
+  };
+  
   useEffect(() => {
     applyA11y(s);
     try { localStorage.setItem("accesibilidad", JSON.stringify(s)); } catch {}
@@ -331,6 +470,31 @@ function A11yPanel() {
             {toggle("links", "Subrayar enlaces", "Distingue los enlaces del texto")}
             {toggle("font", "Letra fácil de leer", "Cambia los títulos a una letra simple")}
             {toggle("motion", "Detener animaciones", "Quita movimientos y la intro")}
+            <div className="a11y-voice">
+              <p className="a11y-voice-title">Asistente de voz</p>
+              <small>Interactúa con nuestra página utilizando tu voz.</small>
+
+              <button type="button" onClick={startVoiceRecognition}>
+                🎤 Hablar con la página
+              </button>
+
+              <button type="button" onClick={readPage}>
+                🔊 Leer página en voz alta
+              </button>
+
+              <button type="button" onClick={stopSpeaking}>
+                ⏹ Detener lectura
+              </button>
+
+              <p role="status" aria-live="polite">{voiceStatus}</p>
+              <small aria-live="polite">{voiceMessage}</small>
+
+              {whatsappPending && (
+                <button type="button" onClick={openWhatsAppFromVoice}>
+                  Sí, abrir WhatsApp
+                </button>
+              )}
+            </div>
             <button type="button" className="a11y-reset" onClick={() => setS({ ...A11Y_DEFAULT })}>Restablecer</button>
           </motion.div>
         )}
