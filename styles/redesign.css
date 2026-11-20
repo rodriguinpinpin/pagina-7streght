@@ -533,6 +533,55 @@ main:focus, h1:focus { outline: none; }
 .a11y-toggle.on i::after { transform: translateX(18px); }
 .a11y-reset { min-height: 44px; margin-top: 4px; border-radius: 12px; border: 1px dashed rgba(255,255,255,0.3); background: none; font-weight: 700; color: var(--text-soft); }
 
+/* ---------- Asistente de voz accesible ---------- */
+.a11y-voice {
+  display: grid;
+  gap: 8px;
+  padding: 12px;
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  background: rgba(255,255,255,0.04);
+}
+
+.a11y-voice-title {
+  margin: 0;
+  font-weight: 800;
+  font-size: 1rem;
+}
+
+.a11y-voice > small {
+  color: var(--text-soft);
+  line-height: 1.5;
+}
+
+.a11y-voice button {
+  min-height: 44px;
+  padding: 10px 12px;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: rgba(255,255,255,0.07);
+  color: var(--text);
+  font: inherit;
+  font-weight: 700;
+  text-align: left;
+}
+
+.a11y-voice button:hover,
+.a11y-voice button:focus-visible {
+  background: var(--red);
+  color: #fff;
+}
+
+.a11y-voice button:focus-visible {
+  outline: 3px solid #ffd400;
+  outline-offset: 3px;
+}
+
+.a11y-voice p,
+.a11y-voice small {
+  overflow-wrap: anywhere;
+}
+
 /* ---------- Modo claro ---------- */
 html[data-theme="light"] {
   --bg: #f4f4f6;
