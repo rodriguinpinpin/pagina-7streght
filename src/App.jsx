@@ -239,7 +239,7 @@ function getStatus() {
 
 // ---------- intro y cursor ----------
 // ---------- ACCESIBILIDAD: preferencias del visitante ----------
-const A11Y_DEFAULT = { text: 0, contrast: false, links: false, motion: false, font: false };
+const A11Y_DEFAULT = { text: 0, contrast: false, links: false, motion: false, font: false, theme: "dark" };
 function readA11y() {
   try { return { ...A11Y_DEFAULT, ...JSON.parse(localStorage.getItem("accesibilidad") || "{}") }; } catch { return { ...A11Y_DEFAULT }; }
 }
@@ -250,6 +250,7 @@ function applyA11y(s) {
   root.dataset.links = s.links ? "underline" : "";
   root.dataset.motion = s.motion ? "reduce" : "";
   root.dataset.font = s.font ? "readable" : "";
+  root.dataset.theme = s.theme === "light" ? "light" : "dark";
 }
 // Se aplica antes de pintar la página para evitar parpadeos.
 applyA11y(readA11y());
@@ -312,6 +313,12 @@ function A11yPanel() {
             exit={{ opacity: 0, y: -6, transition: { duration: 0.12 } }}
           >
             <p className="a11y-title">Accesibilidad</p>
+            <A11yToggle
+              on={s.theme === "dark"}
+              label="Modo oscuro"
+              hint="Alterna entre el modo oscuro y el modo claro"
+              onChange={() => set("theme", s.theme === "dark" ? "light" : "dark")}
+            />
             <div className="a11y-size" role="group" aria-label="Tamaño del texto">
               <span>Tamaño del texto</span>
               <div>
@@ -699,7 +706,7 @@ function WhyUs() {
       <div className="smoke smoke-2" />
       <div className="container why-grid">
         <div>
-          <Title accent="elegirnos">Por qué</Title>
+          <Title accent="nosotros">Por qué</Title>
           <motion.ul className="features" variants={stagger} {...inView}>
             {FEATURES.map(([Icon, title, text]) => (
               <motion.li key={title} variants={reveal}>
@@ -715,9 +722,7 @@ function WhyUs() {
           </motion.ul>
         </div>
         <div className="why-big" aria-hidden="true">
-          <span className="accent">Entrena</span>
-          <span>Ahora</span>
-          <span className="outline">Mismo</span>
+          <span className="accent">Entrena</span> <span>Ahora</span> <span className="outline">Mismo</span>
         </div>
       </div>
     </section>
@@ -745,7 +750,7 @@ function Trainers() {
   return (
     <section id="entrenadores" className="section trainers-section">
       <div className="container">
-        <Title center accent="entrenadores" lead="Cada coach tiene su propio perfil: entra y descubre en qué te puede ayudar.">Conoce a los</Title>
+        <Title center accent="entrenadores" lead="Cada entrenador tiene su propido perfil: entra y descubre en qué te puede ayudar.">Conoce a los</Title>
         <motion.ul className="trainers" variants={stagger} {...inView}>
           {siteConfig.trainers.map((t) => <TrainerCard key={t.slug} t={t} />)}
         </motion.ul>
@@ -793,7 +798,7 @@ function TrainerProfile({ t }) {
       <section className="section">
         <div className="container profile-body">
           <div>
-            <Title accent="él">Sobre</Title>
+            <Title accent="el entrenador">Sobre</Title>
             <Reveal as="p" className="profile-bio">{t.bio}</Reveal>
             <motion.ul className="chips" variants={stagger} {...inView}>
               {t.specialties.map((s) => <motion.li key={s} variants={reveal}>{s}</motion.li>)}
@@ -803,7 +808,7 @@ function TrainerProfile({ t }) {
             </Reveal>
           </div>
           <div>
-            <Title accent="ayuda a">Te</Title>
+            <Title accent="ayuda a entrenar">Te</Title>
             <motion.ol className="helps" variants={stagger} {...inView}>
               {t.helps.map((h) => (
                 <motion.li key={h} variants={reveal}>
@@ -817,7 +822,7 @@ function TrainerProfile({ t }) {
 
       <section className="section section-alt">
         <div className="container">
-          <Title center accent="coaches">Otros</Title>
+          <Title center accent="entrenadores">Otros</Title>
           <motion.ul className="trainers trainers-small" variants={stagger} {...inView}>
             {others.map((o) => <TrainerCard key={o.slug} t={o} />)}
           </motion.ul>
@@ -1042,7 +1047,7 @@ function Schedule() {
   }, []);
   const { weekdays, saturday, sunday } = siteConfig.hours;
   const groups = [
-    { title: weekdays.days, days: [1, 2, 3, 4, 5], shifts: shiftsFor(1), note: "Pausa de 1 a 3 PM" },
+    { title: weekdays.days, days: [1, 2, 3, 4, 5], shifts: shiftsFor(1), note: "Pausa de 1 a 3 p. m." },
     { title: "Sábados", days: [6], shifts: shiftsFor(6) },
     { title: "Domingos", days: [0], shifts: [] },
   ];
