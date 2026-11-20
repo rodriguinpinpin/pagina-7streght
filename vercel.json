@@ -2,7 +2,7 @@
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "framework": null,
   "installCommand": "",
-  "buildCommand": "",
+  "buildCommand": "node tools/dev-server.cjs --build",
   "outputDirectory": ".",
   "cleanUrls": true,
   "headers": [
