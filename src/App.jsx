@@ -270,7 +270,7 @@ function A11yPanel() {
   const [s, setS] = useState(readA11y);
   const btnRef = useRef(null);
   const panelRef = useRef(null);
-  const panelRef = useRef(null);
+
   
   // ---------- ASISTENTE DE VOZ ----------
   const [voiceStatus, setVoiceStatus] = useState("Voz lista");
