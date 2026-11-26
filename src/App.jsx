@@ -239,12 +239,13 @@ function getStatus() {
 
 // ---------- intro y cursor ----------
 // ---------- ACCESIBILIDAD: preferencias del visitante ----------
-const A11Y_DEFAULT = { text: 0, contrast: false, links: false, motion: false, font: false, theme: "dark" };
+const A11Y_DEFAULT = { text: 0, contrast: false, links: false, motion: false, font: false, theme: "dark", colorblind: false };
 function readA11y() {
   try { return { ...A11Y_DEFAULT, ...JSON.parse(localStorage.getItem("accesibilidad") || "{}") }; } catch { return { ...A11Y_DEFAULT }; }
 }
 function applyA11y(s) {
   const root = document.documentElement;
+  root.dataset.colorblind = s.colorblind ? "on" : "";
   root.style.fontSize = ["100%", "112.5%", "125%", "137.5%"][s.text] || "100%";
   root.dataset.contrast = s.contrast ? "high" : "";
   root.dataset.links = s.links ? "underline" : "";
@@ -467,6 +468,7 @@ function A11yPanel() {
               </div>
             </div>
             {toggle("contrast", "Alto contraste", "Texto más claro y fondos sólidos")}
+            {toggle("colorblind", "Ayuda para daltonismo", "Colores alternativos y marcas en las opciones activas")}
             {toggle("links", "Subrayar enlaces", "Distingue los enlaces del texto")}
             {toggle("font", "Letra fácil de leer", "Cambia los títulos a una letra simple")}
             {toggle("motion", "Detener animaciones", "Quita movimientos y la intro")}

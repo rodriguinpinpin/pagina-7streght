@@ -702,3 +702,67 @@ html[data-motion="reduce"] .ribbon-track, html[data-motion="reduce"] .sparks, ht
   .sparks { display: none; }
   .smoke { animation-duration: 60s; }
 }
+
+/* Ayuda para daltonismo: solo se aplica al activarla */
+html[data-colorblind="on"] {
+  --a11y-action: #005fcc;
+  --a11y-accent: #8cc8ff;
+  --a11y-status: #ffda75;
+}
+
+html[data-colorblind="on"][data-theme="light"] {
+  --a11y-accent: #0054a6;
+  --a11y-status: #765000;
+}
+
+html[data-colorblind="on"][data-contrast="high"] {
+  --a11y-accent: #8cc8ff;
+  --a11y-status: #ffda75;
+}
+
+/* Botones y tamaño de texto seleccionado */
+html[data-colorblind="on"] .btn:not(.btn-ghost),
+html[data-colorblind="on"] .chat-send,
+html[data-colorblind="on"] .a11y-size button[aria-pressed="true"] {
+  background: var(--a11y-action);
+  border-color: var(--a11y-action);
+  color: #fff;
+}
+
+/* Interruptores activos */
+html[data-colorblind="on"] .a11y-toggle.on i {
+  background: var(--a11y-action);
+}
+
+html[data-colorblind="on"] .a11y-toggle.on strong::after {
+  content: " ✓";
+}
+
+html[data-colorblind="on"] .a11y-size button[aria-pressed="true"] {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Textos destacados */
+html[data-colorblind="on"] .accent,
+html[data-colorblind="on"] .title em,
+html[data-colorblind="on"] .trainer-role,
+html[data-colorblind="on"] .profile-role {
+  color: var(--a11y-accent);
+}
+
+/* Enlaces reconocibles sin depender del color */
+html[data-colorblind="on"] main a:not(.btn) {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+}
+
+/* Indicador de local abierto */
+html[data-colorblind="on"] .status.open strong {
+  color: var(--a11y-status);
+}
+
+html[data-colorblind="on"] .status.open .status-dot,
+html[data-colorblind="on"] .status.open .status-dot::after {
+  background: var(--a11y-status);
+}
